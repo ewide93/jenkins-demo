@@ -29,15 +29,25 @@ pipeline {
 
         stage('Python script returning -1') {
             steps {
-                bat 'python will_fail.py'
+                RV = bat 'python will_fail.py'
+                echo "Return value: ${RV}"
             }
         }
 
-        stage('Clean up venv') {
-            steps {
-                bat "call ${DEACTIVATE_VENV}"
-            }
+    }
+
+    post {
+
+        always {
+            bat "call ${DEACTIVATE_VENV}"
         }
 
+        success {
+            echo "Pipeline execution was successful."
+        }
+
+        unsuccessful {
+            echo "Pipeline executeion was unsuccessful."
+        }
     }
 }
