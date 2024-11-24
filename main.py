@@ -2,7 +2,9 @@ import os
 
 
 def main() -> None:
-    print(f"Current directory: {os.curdir}")
+    print("Workspace contents:")
+    for file in os.listdir():
+        print(file)
 
 
 if __name__ == "__main__":
