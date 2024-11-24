@@ -21,6 +21,13 @@ pipeline {
         stage('Run python script') {
             steps {
                 bat "python main.py"
+                archiveArtifacts artifacts: "${env.WORKSPACE}/workspace.txt"
+            }
+        }
+
+        stage('Clean up venv') {
+            steps {
+                bat "call .venv/Scripts/deactivate.bat"
             }
         }
 
