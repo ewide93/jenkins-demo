@@ -3,6 +3,8 @@ pipeline {
 
     environment {
         UV = 'C:\\Users\\ewide\\.local\\bin\\uv.exe'
+        ACTIVATE_VENV = '.venv/Scripts/activate.bat'
+        DEACTIVATE_VENV = '.venv/Scripts/deactivate.bat'
     }
 
     options {
@@ -14,7 +16,7 @@ pipeline {
         stage('Set up venv') {
             steps {
                 bat "${UV} venv --python 3.12.7"
-                bat "call .venv/Scripts/activate.bat"
+                bat "call ${ACTIVATE_VENV}"
             }
         }
 
@@ -27,7 +29,7 @@ pipeline {
 
         stage('Clean up venv') {
             steps {
-                bat "call .venv/Scripts/deactivate.bat"
+                bat "call ${DEACTIVATE_VENV}"
             }
         }
 
