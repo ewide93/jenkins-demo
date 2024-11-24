@@ -9,6 +9,7 @@ def save_workspace() -> None:
 
 def main() -> None:
     save_workspace()
+    print("Workspace file saved!")
 
 if __name__ == "__main__":
     main()
