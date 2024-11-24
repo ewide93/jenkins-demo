@@ -5,6 +5,7 @@ pipeline {
         UV = 'C:\\Users\\ewide\\.local\\bin\\uv.exe'
         ACTIVATE_VENV = '.venv/Scripts/activate.bat'
         DEACTIVATE_VENV = '.venv/Scripts/deactivate.bat'
+        IGNORE_RETVAL = '|| C:\\Cmder\\vendor\\git-for-windows\\usr\\bin\\true.exe'
     }
 
     options {
@@ -29,7 +30,7 @@ pipeline {
 
         stage('Python script returning -1') {
             steps {
-                bat 'python will_fail.py || true'
+                bat "python will_fail.py ${IGNORE_RETVAL}"
                 echo "Return value: %ERRORLEVEL%"
             }
 
