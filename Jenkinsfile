@@ -31,7 +31,7 @@ pipeline {
         stage('Python script returning -1') {
             steps {
                 bat "python will_fail.py ${IGNORE_RETVAL}"
-                echo "Return value: %ERRORLEVEL%"
+                echo "Return value: ${env.ERRORLEVEL}"
             }
 
             post {
