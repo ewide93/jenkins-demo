@@ -12,8 +12,10 @@ pipeline {
     stages {
 
         stage('Set up venv') {
-            bat "${UV} venv --python 3.12.7"
-            bat "call .venv/Scripts/activate.bat"
+            steps {
+                bat "${UV} venv --python 3.12.7"
+                bat "call .venv/Scripts/activate.bat"
+            }
         }
 
         stage('Run python script') {
