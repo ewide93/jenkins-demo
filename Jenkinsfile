@@ -27,6 +27,12 @@ pipeline {
             }
         }
 
+        stage('Python script returning -1') {
+            steps {
+                bat 'python will_fail.py'
+            }
+        }
+
         stage('Clean up venv') {
             steps {
                 bat "call ${DEACTIVATE_VENV}"
