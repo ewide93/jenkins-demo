@@ -21,7 +21,7 @@ pipeline {
         stage('Run python script') {
             steps {
                 bat "python main.py"
-                archiveArtifacts artifacts: "${env.WORKSPACE}/workspace.txt"
+                archiveArtifacts artifacts: "workspace.txt"
             }
         }
 
