@@ -29,7 +29,7 @@ pipeline {
 
         stage('Python script returning -1') {
             steps {
-                bat 'python will_fail.py'
+                bat 'python will_fail.py || true'
                 echo "Return value: %ERRORLEVEL%"
             }
 
