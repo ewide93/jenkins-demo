@@ -13,8 +13,9 @@ pipeline {
 
         stage('Run python script') {
             steps {
-                bat "pwd"
-                bat "echo ${PYTHON}"
+                pwd
+                echo "${PYTHON}"
+                bat "${PYTHON} main.py"
             }
         }
 
