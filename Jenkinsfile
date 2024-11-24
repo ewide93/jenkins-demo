@@ -29,8 +29,18 @@ pipeline {
 
         stage('Python script returning -1') {
             steps {
-                RV = bat 'python will_fail.py'
-                echo "Return value: ${RV}"
+                bat 'python will_fail.py'
+                echo "Return value: %ERRORLEVEL%"
+            }
+
+            post {
+                success {
+                    echo "All's good"
+                }
+
+                failure {
+                    echo "Something is shit"
+                }
             }
         }
 
@@ -46,7 +56,7 @@ pipeline {
             echo "Pipeline execution was successful."
         }
 
-        unsuccessful {
+        failure {
             echo "Pipeline executeion was unsuccessful."
         }
     }
