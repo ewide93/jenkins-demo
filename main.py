@@ -1,5 +1,8 @@
+import os
+
+
 def main() -> None:
-    print("Hello, world!")
+    print(f"Current directory: {os.curdir}")
 
 
 if __name__ == "__main__":

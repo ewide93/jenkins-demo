@@ -1,12 +1,12 @@
 pipeline {
     agent any
     options {
-        timeout(time: 1, unit: 'SECONDS')
+        timeout(time: 1, unit: 'MINUTES')
     }
     stages {
         stage('Example') {
             steps {
-                echo 'Hello World'
+                sh "python main.py"
             }
         }
     }
