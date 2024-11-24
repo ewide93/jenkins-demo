@@ -13,7 +13,8 @@ pipeline {
 
         stage('Run python script') {
             steps {
-                sh "${PYTHON} main.py"
+                sh "pwd"
+                sh "echo ${PYTHON}"
             }
         }
 
