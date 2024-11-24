@@ -2,8 +2,7 @@ pipeline {
     agent any
 
     environment {
-        PYTHON = 'C:\\Users\\ewide\\AppData\\Local\\Programs\\Python\\Python312\\python.exe'
-        PWD = 'C:\\Cmder\\vendor\\git-for-windows\\usr\\bin\\pwd.exe'
+        UV = 'C:\\Users\\ewide\\.local\\bin\\uv.exe'
     }
 
     options {
@@ -12,11 +11,14 @@ pipeline {
 
     stages {
 
+        stage('Set up venv') {
+            bat "${UV} venv --python 3.12.7"
+            bat "call .venv/Scripts/activate.bat"
+        }
+
         stage('Run python script') {
             steps {
-                bat "${PWD}"
-                bat "echo ${PYTHON}"
-                bat "${PYTHON} main.py"
+                bat "python main.py"
             }
         }
 
